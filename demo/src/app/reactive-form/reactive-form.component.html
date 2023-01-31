@@ -1,0 +1,49 @@
+<app-header [drawer]="drawer"></app-header>
+
+<mat-drawer-container class="example-container" [hasBackdrop]="true">
+  <mat-drawer #drawer [mode]="'over'" style="width: 180px;">
+    <button mat-button style="width: 100%; color: #3F51B5;"><mat-icon
+        style="transform: scale(1.3);color: #8400ff;">account_circle</mat-icon>Profile Settings</button>
+    <mat-divider></mat-divider>
+    <button mat-button style="width: 100%; color: #3F51B5;"><mat-icon
+        style="transform: scale(1.3);color: #fb9302;">settings</mat-icon>App Settings</button>
+    <mat-divider></mat-divider>
+    <button mat-button style="width: 100%; color: #3F51B5;"><mat-icon
+        style="transform: scale(1.3);color: #ad4a20;">translate</mat-icon>Language</button>
+    <mat-divider></mat-divider>
+    <button mat-button style="width: 100%; color: #3F51B5;"><mat-icon
+        style="transform: scale(1.3);color: #008a3c;">backup</mat-icon>Backup</button>
+    <mat-divider></mat-divider>
+    <button mat-button style="width: 100%; color: #3F51B5;"><mat-icon
+        style="transform: scale(1.3);color: #F44336;">logout</mat-icon>Logout</button>
+  </mat-drawer>
+  <mat-drawer-content>
+
+    <div class="main-container">
+
+      <!-- search bar -->
+      <mat-form-field class="mat-search">
+        <mat-label>Filter</mat-label>
+        <input matInput (keyup)="applyFilter($event)" placeholder="Search by name" #input>
+      </mat-form-field>
+
+      <!-- add button -->
+      <button mat-raised-button color="primary" class="add-button" data-bs-toggle="modal"
+        data-bs-target="#staticBackdropAdd" (click)="onAddRecordClicked()"><mat-icon>add</mat-icon>Add Record</button>
+
+      <!-- record table -->
+      <app-record-table [dataSource]="dataSource" [displayedColumns]="displayedColumns" (edit)="onEdit($event)"
+        (delete)="onDelete($event)">
+      </app-record-table>
+
+    </div>
+  </mat-drawer-content>
+</mat-drawer-container>
+
+
+<!--delete Modal -->
+<app-confirm-modal [actionName]="'Confirm'" [actionInfo]="'Do you want to delete this record?'" [button1Name]="'Cancel'"
+  [button2Name]="'Delete'" (button1Clicked)="deleteId=''" (button2Clicked)="onDeleteConfirm()"></app-confirm-modal>
+<!-- Add Modal -->
+<app-form [studentForm]="studentForm" [studentModel]="studentModal" (formSubmit)="onSubmit($event)"
+  [action]="action"></app-form>

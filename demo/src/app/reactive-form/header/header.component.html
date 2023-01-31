@@ -1,0 +1,19 @@
+<mat-toolbar color="primary">
+    <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon" (click)="drawer.toggle()">
+        <mat-icon>menu</mat-icon>
+    </button>
+    Records Dashboard
+    <div style="position: absolute; right: 20px;">
+        <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
+            <mat-icon>favorite</mat-icon>
+        </button>
+        <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon"  [matMenuTriggerFor]="beforeMenu">
+            <mat-icon>share</mat-icon>
+        </button>
+        <mat-menu #beforeMenu="matMenu" xPosition="before">
+            <button mat-menu-item> <i class="fa-brands fa-whatsapp fa-2x" style="color: #008a3c;"></i>&nbsp;WhatsApp</button>
+            <button mat-menu-item> <i class="fa-brands fa-facebook fa-2x" style="color: #2f71ff;"></i>&nbsp;Facebook</button>
+            <button mat-menu-item> <i class="fa-solid fa-link fa-2x" style="color: #2e2f31;"></i>&nbsp;Link</button>
+          </mat-menu>
+    </div>
+</mat-toolbar>

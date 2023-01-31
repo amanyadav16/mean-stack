@@ -1,0 +1,51 @@
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z8 record-table">
+
+    <!-- Position Column -->
+    <ng-container matColumnDef="enrollmentId">
+        <th mat-header-cell *matHeaderCellDef> Enrollment ID</th>
+        <td mat-cell *matCellDef="let element"> {{element.enrollmentId}} </td>
+    </ng-container>
+    <!-- Position Column -->
+    <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef> Name </th>
+        <td mat-cell *matCellDef="let element"> {{element.firstName+' '+element.lastName}} </td>
+    </ng-container>>
+
+    <!-- Weight Column -->
+    <ng-container matColumnDef="gender">
+        <th mat-header-cell *matHeaderCellDef> Gender </th>
+        <td mat-cell *matCellDef="let element"> {{element.gender}} </td>
+    </ng-container>
+
+    <!-- Symbol Column -->
+    <ng-container matColumnDef="year">
+        <th mat-header-cell *matHeaderCellDef>Year </th>
+        <td mat-cell *matCellDef="let element"> {{element.year}} </td>
+    </ng-container>
+    <ng-container matColumnDef="semester">
+        <th mat-header-cell *matHeaderCellDef> Semester </th>
+        <td mat-cell *matCellDef="let element"> {{element.semester}} </td>
+    </ng-container>
+    <ng-container matColumnDef="city">
+        <th mat-header-cell *matHeaderCellDef> City </th>
+        <td mat-cell *matCellDef="let element"> {{element.address.city}} </td>
+    </ng-container>
+    <ng-container matColumnDef="state">
+        <th mat-header-cell *matHeaderCellDef> State </th>
+        <td mat-cell *matCellDef="let element"> {{element.address.state}} </td>
+    </ng-container>
+    <ng-container matColumnDef="action">
+        <th mat-header-cell *matHeaderCellDef> Action </th>
+        <td mat-cell *matCellDef="let element"> <span class="material-icons edit-icon" data-bs-toggle="modal"
+                data-bs-target="#staticBackdropAdd" (click)="onEdit(element)">edit</span> &nbsp; <span
+                class="material-icons delete-icon" data-bs-toggle="modal" data-bs-target="#exampleModal"
+                (click)="onDelete(element.enrollmentId)">delete</span></td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns" class="header-row"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;" class="data-row"></tr>
+    <!-- Row shown when there is no matching data. -->
+    <tr class="mat-row" *matNoDataRow>
+        <td class="mat-cell" colspan="4">No data found</td>
+    </tr>
+</table>

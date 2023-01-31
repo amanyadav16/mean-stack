@@ -1,0 +1,48 @@
+
+.form-container {
+    margin-left: 30%;
+    margin-top: 5%;
+}
+
+.hobbies-container {
+    display: flex;
+}
+
+.error-text {
+    font-size: 13px !important;
+    font-family: var(--mdc-typography-caption-font-family, var(--mdc-typography-font-family, Roboto, sans-serif));
+    color: #DD463B;
+}
+
+.name-container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.select-container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.address-container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.eid {
+    min-width: 100% !important;
+}
+
+.modal-content {
+    border-radius: 4px !important;
+    width: 100% !important;
+}
+
+.modal-body {
+    margin-left: 30px !important;
+    margin-right: 30px !important;
+}
+
+.modal-footer {
+    padding-right: 0px !important;
+}

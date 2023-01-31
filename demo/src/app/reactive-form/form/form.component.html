@@ -1,0 +1,123 @@
+<div class="modal fade" id="staticBackdropAdd" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered update-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="staticBackdropLabel" style="margin-left: 30px;">{{action | titlecase}} Record</h1>
+                <mat-icon data-bs-dismiss="modal"
+                    style="cursor: pointer;margin-right: 30px; color: rgb(235, 96, 96);">cancel</mat-icon>
+            </div>
+            <div class="modal-body">
+                <form #addForm="ngForm" [formGroup]="studentForm" (ngSubmit)="onSubmit()" novalidate>
+                    <!-- enrollmentId -->
+                    <fieldset [disabled]="action=='edit'">
+                    <mat-form-field class="example-full-width eid">
+                        <mat-label>Enrollment ID</mat-label>
+                        <input type="text" matInput formControlName="enrollmentId" placeholder=""
+                            [(ngModel)]="studentModel.enrollmentId">
+                        <mat-error
+                            *ngIf="studentForm.get('enrollmentId')?.hasError('pattern') && !studentForm.get('enrollmentId')?.hasError('required')">
+                            provide valid Enrollment ID
+                        </mat-error>
+                        <mat-error *ngIf="studentForm.get('enrollmentId')?.hasError('required')">
+                            enrollment Id is <strong>required</strong>
+                        </mat-error>
+                    </mat-form-field>
+                </fieldset><br>
+
+                    <div class="name-container">
+                        <!-- firstName -->
+                        <mat-form-field class="example-full-width">
+                            <mat-label>Firstname</mat-label>
+                            <input type="text" matInput formControlName="firstName" placeholder=""
+                                [(ngModel)]="studentModel.firstName">
+                            <mat-error
+                                *ngIf="studentForm.get('firstName')?.hasError('pattern') && !studentForm.get('firstName')?.hasError('required')">
+                                Atleat 3 characters required
+                            </mat-error>
+                            <mat-error *ngIf="studentForm.get('firstName')?.hasError('required')">
+                                Firstname is <strong>required</strong>
+                            </mat-error>
+                        </mat-form-field>&nbsp;&nbsp;&nbsp;&nbsp;
+
+
+                        <!-- lastName -->
+                        <mat-form-field class="example-full-width">
+                            <mat-label>Lastname</mat-label>
+                            <input type="text" matInput formControlName="lastName" placeholder=""
+                                [(ngModel)]="studentModel.lastName">
+                            <mat-error
+                                *ngIf="studentForm.get('lastName')?.hasError('pattern') && !studentForm.get('lastName')?.hasError('required')">
+                                Atleat 3 characters required
+                            </mat-error>
+                            <mat-error *ngIf="studentForm.get('lastName')?.hasError('required')">
+                                LastName is <strong>required</strong>
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+
+                    <!-- gender -->
+                    <mat-label>Gender</mat-label>
+                    <mat-radio-group aria-label="Select an option" formControlName="gender"
+                        [(ngModel)]="studentModel.gender">
+                        <mat-radio-button value="male">Male</mat-radio-button>
+                        <mat-radio-button value="female">Female</mat-radio-button>
+                        <span
+                            *ngIf="studentForm.get('gender')?.hasError('required') && studentForm.get('gender')?.touched"
+                            class="error-text"> Gender
+                            is
+                            <strong>required</strong></span>
+                    </mat-radio-group><br><br>
+
+                    <div class="select-container">
+                        <!-- semester -->
+                        <mat-form-field appearance="fill">
+                            <mat-label>Year</mat-label>
+                            <mat-select formControlName="year" [(ngModel)]="studentModel.year">
+                                <mat-option *ngFor="let year of years" [value]="year.value">
+                                    {{year.viewValue}}
+                                </mat-option>
+                            </mat-select>
+                            <mat-error *ngIf="studentForm.get('year')?.hasError('required')">
+                                year is <strong>required</strong>
+                            </mat-error>
+                        </mat-form-field>&nbsp;&nbsp;&nbsp;&nbsp;
+                        <mat-form-field appearance="fill">
+                            <mat-label>Semester</mat-label>
+                            <mat-select formControlName="semester" [(ngModel)]="studentModel.semester">
+                                <mat-option *ngFor="let sem of semesterList" [value]="sem.value">
+                                    {{sem.viewValue}}
+                                </mat-option>
+                            </mat-select>
+                            <mat-error *ngIf="studentForm.get('semester')?.hasError('required')">
+                                semester is <strong>required</strong>
+                            </mat-error>
+                        </mat-form-field>
+                    </div><br>
+                    <div class="address-container" formGroupName="address">
+                        <!-- city -->
+                        <mat-form-field appearance="fill">
+                            <mat-label>City</mat-label>
+                            <input type="text" matInput formControlName="city" [(ngModel)]="studentModel.address.city">
+                        </mat-form-field>&nbsp;&nbsp;&nbsp;&nbsp;
+
+                        <!-- state -->
+                        <mat-form-field appearance="fill">
+                            <mat-label>State</mat-label>
+                            <input matInput type="text" formControlName="state"
+                                [(ngModel)]="studentModel.address.state">
+                        </mat-form-field>
+                    </div>
+                    <!-- submit buuton -->
+                    <div class="modal-footer">
+                        <button type="button" mat-raised-button data-bs-dismiss="modal"
+                            style="margin-right: 10px;">Close</button>
+                        <!-- <button type="button" class="btn btn-primary">Save Changes</button> -->
+                        <br><button type="submit" mat-raised-button color="primary" data-bs-dismiss="modal"
+                            [disabled]="studentForm.invalid">{{action=='add'?'Save':'Save Changes'}}</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
