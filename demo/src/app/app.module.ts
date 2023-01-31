@@ -26,6 +26,7 @@ import {MatSidenavModule} from '@angular/material/sidenav';
 import { HighlightDirective } from './highlight.directive';
 import {MatDividerModule} from '@angular/material/divider';
 import {MatMenuModule} from '@angular/material/menu';
+import { LeftMenuComponent } from './reactive-form/left-menu/left-menu.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -34,7 +35,8 @@ import {MatMenuModule} from '@angular/material/menu';
     HeaderComponent,
     ConfirmModalComponent,
     FormComponent,
-    HighlightDirective
+    HighlightDirective,
+    LeftMenuComponent
   ],
   imports: [
     BrowserModule,
