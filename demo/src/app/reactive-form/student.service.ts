@@ -23,6 +23,6 @@ export class StudentService {
   updateStudent(student:Student){
     const headers = { 'content-type': 'application/json'} 
     const body=JSON.stringify(student)
-    return this.http.put(`http://localhost:3000/students/${student.firstName}`,body,{'headers':headers})
+    return this.http.put(`http://localhost:3000/students/${student.enrollmentId}`,body,{'headers':headers})
   }
 }

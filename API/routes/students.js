@@ -31,13 +31,13 @@ router.post("/", async (req, res) => {
 });
 
 //getting one
-router.get("/:name", (req, res) => {
+router.get("/:enrollmentId", (req, res) => {
   res.send("get student with name: " + req.params.name);
 });
 
 //update one
-router.put("/:firstName", async (req, res) => {
-  const s = await Student.findOne({ firstName: req.params.firstName });
+router.put("/:enrollmentId", async (req, res) => {
+  const s = await Student.findOne({ enrollmentId: req.params.enrollmentId });
   try {
     const response = await Student.findByIdAndUpdate(s.id, req.body, {
       new: true,
