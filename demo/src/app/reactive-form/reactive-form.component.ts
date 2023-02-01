@@ -30,7 +30,8 @@ export class ReactiveFormComponent {
   studentModal!: Student;
   deleteId = '';
   action: string = '';
-  dataSource: any;
+  tableData:any
+  visibleTableData:any;
 
   constructor(
     private fb: FormBuilder,
@@ -74,16 +75,28 @@ export class ReactiveFormComponent {
     });
   }
 
-  applyFilter(event: Event) {
+ filterData(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
-    this.dataSource.filter = filterValue.trim().toLowerCase();
+    let filteredData=this.tableData.filter((item:any)=>{
+      for(let prop in item){
+        if(typeof item[prop]=='string'){
+          if(prop == '_id')
+            continue;
+          if(item[prop].toLowerCase().includes(filterValue)){
+            return true;
+          }  
+        }
+      }
+      return false;
+    })
+    this.visibleTableData=new MatTableDataSource(filteredData)
 }
 
   loadTableData() {
     this.studentService.getStudents().subscribe({
       next: (res) => {
-        const tableData: any = res;
-        this.dataSource = new MatTableDataSource(tableData);
+      this.tableData = res;
+        this.visibleTableData=new MatTableDataSource(this.tableData);
       },
       error: (err) => {
         console.log(err.message);

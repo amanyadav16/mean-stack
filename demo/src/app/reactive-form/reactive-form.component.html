@@ -10,7 +10,7 @@
       <!-- search bar -->
       <mat-form-field class="mat-search">
         <mat-label>Filter</mat-label>
-        <input matInput (keyup)="applyFilter($event)" placeholder="Search by name" #input>
+        <input matInput (keyup)="filterData($event)" placeholder="Search by name" #input>
       </mat-form-field>
 
       <!-- add button -->
@@ -18,7 +18,7 @@
         data-bs-target="#staticBackdropAdd" (click)="onAddRecordClicked()"><mat-icon>add</mat-icon>Add Record</button>
 
       <!-- record table -->
-      <app-record-table [dataSource]="dataSource" [displayedColumns]="displayedColumns" (edit)="onEdit($event)"
+      <app-record-table [dataSource]="visibleTableData" [displayedColumns]="displayedColumns" (edit)="onEdit($event)"
         (delete)="onDelete($event)">
       </app-record-table>
 
