@@ -27,6 +27,7 @@ import { HighlightDirective } from './highlight.directive';
 import {MatDividerModule} from '@angular/material/divider';
 import {MatMenuModule} from '@angular/material/menu';
 import { LeftMenuComponent } from './reactive-form/left-menu/left-menu.component';
+import {MatPaginatorModule} from '@angular/material/paginator';
 @NgModule({
   declarations: [
     AppComponent,
@@ -57,7 +58,8 @@ import { LeftMenuComponent } from './reactive-form/left-menu/left-menu.component
     MatDialogModule,
     MatSidenavModule,
     MatDividerModule,
-    MatMenuModule
+    MatMenuModule,
+    MatPaginatorModule
   ],
   providers: [],
   bootstrap: [AppComponent]
