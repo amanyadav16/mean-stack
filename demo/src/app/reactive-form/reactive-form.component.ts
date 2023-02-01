@@ -30,8 +30,8 @@ export class ReactiveFormComponent {
   studentModal!: Student;
   deleteId = '';
   action: string = '';
-  tableData:any
-  visibleTableData:any;
+  tableData: any
+  visibleTableData: any;
 
   constructor(
     private fb: FormBuilder,
@@ -75,28 +75,37 @@ export class ReactiveFormComponent {
     });
   }
 
- filterData(event: Event) {
-    const filterValue = (event.target as HTMLInputElement).value;
-    let filteredData=this.tableData.filter((item:any)=>{
-      for(let prop in item){
-        if(typeof item[prop]=='string'){
-          if(prop == '_id')
+  filterData(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value.trim().toLowerCase();
+    let filteredData = this.tableData.filter((item: any) => {
+      for (let prop in item) {
+        if (typeof item[prop] == 'string') {
+          if (prop == '_id')
             continue;
-          if(item[prop].toLowerCase().includes(filterValue)){
+          if (item[prop].toLowerCase().includes(filterValue)) {
             return true;
-          }  
+          }
+        } else {
+          let nestedObject = item[prop];
+          for (let nestedProp in nestedObject) {
+            if (nestedProp == '_id')
+              continue;
+            if (nestedObject[nestedProp].toLowerCase().includes(filterValue)) {
+              return true;
+            }
+          }
         }
       }
       return false;
     })
-    this.visibleTableData=new MatTableDataSource(filteredData)
-}
+    this.visibleTableData = new MatTableDataSource(filteredData)
+  }
 
   loadTableData() {
     this.studentService.getStudents().subscribe({
       next: (res) => {
-      this.tableData = res;
-        this.visibleTableData=new MatTableDataSource(this.tableData);
+        this.tableData = res;
+        this.visibleTableData = new MatTableDataSource(this.tableData);
       },
       error: (err) => {
         console.log(err.message);
