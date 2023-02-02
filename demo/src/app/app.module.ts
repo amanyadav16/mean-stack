@@ -28,6 +28,7 @@ import {MatDividerModule} from '@angular/material/divider';
 import {MatMenuModule} from '@angular/material/menu';
 import { LeftMenuComponent } from './reactive-form/left-menu/left-menu.component';
 import {MatPaginatorModule} from '@angular/material/paginator';
+import {MatListModule} from '@angular/material/list';
 @NgModule({
   declarations: [
     AppComponent,
@@ -59,7 +60,8 @@ import {MatPaginatorModule} from '@angular/material/paginator';
     MatSidenavModule,
     MatDividerModule,
     MatMenuModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    MatListModule
   ],
   providers: [],
   bootstrap: [AppComponent]

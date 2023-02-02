@@ -1,14 +1,10 @@
-<button mat-button style="width: 100%; color: #3F51B5;"><mat-icon
-    style="transform: scale(1.3);color: #8400ff;">account_circle</mat-icon>Profile Settings</button>
-<mat-divider></mat-divider>
-<button mat-button style="width: 100%; color: #3F51B5;"><mat-icon
-    style="transform: scale(1.3);color: #fb9302;">settings</mat-icon>App Settings</button>
-<mat-divider></mat-divider>
-<button mat-button style="width: 100%; color: #3F51B5;"><mat-icon
-    style="transform: scale(1.3);color: #ad4a20;">translate</mat-icon>Language</button>
-<mat-divider></mat-divider>
-<button mat-button style="width: 100%; color: #3F51B5;"><mat-icon
-    style="transform: scale(1.3);color: #008a3c;">backup</mat-icon>Backup</button>
-<mat-divider></mat-divider>
-<button mat-button style="width: 100%; color: #3F51B5;"><mat-icon
-    style="transform: scale(1.3);color: #F44336;">logout</mat-icon>Logout</button>
+
+    <div class="list-group">
+        <button type="button" class="list-group-item list-group-item-action" *ngFor="let item of menuItems">
+            <mat-icon
+                class="menu-icon"
+                [style.color]="item.iconColor">{{item.matIcon}}
+            </mat-icon> &nbsp;
+           <span class="menu-text">{{item.displayName}}</span> 
+        </button>
+      </div>
