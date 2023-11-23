@@ -1,11 +1,11 @@
-require("dotenv").config();
+//require("dotenv").config();
 const express = require("express");
 const app = express();
 const cors = require("cors");
 app.use(cors());
 const mongoose = require("mongoose");
 mongoose.set("strictQuery", false);
-mongoose.connect(process.env.DATABASE_URL);
+mongoose.connect("mongodb+srv://aman:aman%407023@cluster1.vzwxac8.mongodb.net/?retryWrites=true&w=majority");
 const db = mongoose.connection;
 
 db.on("error", (err) => console.log(err));
