@@ -9,6 +9,7 @@ import {
   NgForm,
 } from '@angular/forms';
 import { MatTableDataSource } from '@angular/material/table';
+import { Action, TableData } from '../types';
 
 @Component({
   selector: 'app-reactive-form',
@@ -26,11 +27,11 @@ export class ReactiveFormComponent {
     'state',
     'action',
   ];
-  studentForm!: FormGroup;
-  studentModal!: Student;
+  studentForm: FormGroup ={} as FormGroup;
+  studentModal: Student= {} as Student;
   deleteId = '';
-  action: string = '';
-  tableData: any
+  action!:Action;
+  tableData: TableData[]=[];
   visibleTableData: any;
 
   constructor(
